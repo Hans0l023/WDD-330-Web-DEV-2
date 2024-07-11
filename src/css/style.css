@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Ubuntu:wght@300&display=swap');
+
+:root {
+  /* change the values below to your colors from your palette */
+  --primary-color: #396E94   ;/*steel gray*/
+  --secondary-color: #f3f3f3 ;/*gray white*/
+  --accent1-color: #cccccc;/*light*/
+  --accent2-color: #474747;/*dark gray*/
+
+  --heading-font: 'Orbitron', sans-serif;
+  --paragraph-font: 'Ubuntu', sans-serif;
+
+
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+  .logo {
+    line-height: 60px;
+    width: 245px;
+    overflow: hidden;
+    display: flex;
+    font-size: 30px;
+    text-align: right;
+    font-family: var(--font-headline);
+  }
+  .logo img {
+    width: 60px;
+    height: 60px;
+  }
+  .logo a {
+    text-decoration: none;
+    color: var(--font-body);
+  }
+
+  .divider {
+    border-bottom: 2px solid var(--primary-color);
+  }
+  .divider li{
+    border: 2px solid var(--primary-color);
+  }
+
+  .user {
+    position: relative;
+    text-align: center;
+  }
+  .user img {
+    width: 60px;
+  }
+ 
+  .user:hover {
+    fill: gray;
+  }
+  
