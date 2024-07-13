@@ -19,14 +19,22 @@ header {
     justify-content: space-between;
     padding: 0 10px;
   }
+  footer{
+    font-family: var(--heading-font);
+    font-size: small;
+    margin-top: 1rem;
+  }
+  h2{
+    font-family: var(--heading-font);
+  }
   .logo {
     line-height: 60px;
-    width: 245px;
+    width: 260px;
     overflow: hidden;
     display: flex;
-    font-size: 30px;
+    font-size: .5rem;
     text-align: right;
-    font-family: var(--font-headline);
+    font-family: var(--heading-font);
   }
   .logo img {
     width: 60px;
@@ -36,12 +44,19 @@ header {
     text-decoration: none;
     color: var(--font-body);
   }
-
+  #title{
+    padding-left: 5px;
+  }
   .divider {
     border-bottom: 2px solid var(--primary-color);
   }
   .divider li{
     border: 2px solid var(--primary-color);
+  }
+  .heroMsg{
+    text-align: center;
+    padding: 2rem;
+
   }
 
   .user {
@@ -55,4 +70,31 @@ header {
   .user:hover {
     fill: gray;
   }
+
+
+.icon{
+  width: 60%;
+  margin: auto;
+  align-self: auto;
+
+}
+
+a, a h2 {
+  text-decoration: none;
+  color: var(--dark-grey);
+  font-size: small;
+}
+
+#icon-type{
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-type a img{
+  width: 100%;
+}
+
   
