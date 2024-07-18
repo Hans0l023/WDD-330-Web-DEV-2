@@ -1,4 +1,3 @@
-import axios from 'axios';
 
 
 // loading header and footer
@@ -33,27 +32,30 @@ export function renderWithTemplate(
   }
   
 
- // API fetch
- export async function getResult(){
- const type = 'cardio';
-  const apiKey = 'lNg6xyaBCCsOKsRgvrU3Fw==oGrQMVukYf4LkcSWY';
-  const apiUrl = 'https://api.api-ninjas.com/v1/exercises?type=' + type;
-
-  try {
-      const response = await fetch(apiUrl, {
-          headers: {
-              'X-Api-Key': apiKey
-          }
-      });
-
-      if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data;
-  } catch (error) {
-      console.error('Request failed:', error);
-      return null;
+  export function getType(){
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type') || 'default';
+  
+    console.log('Type from URL:', type);
+    return type
   }
+
+ // API fetch
+
+ // Function to get the result from the API
+ export async function getResult() {
+  const type = getType()
+  console.log(type)
+return fetch('https://api.api-ninjas.com/v1/exercises?type' + type, {
+    headers: {
+      'x-api-key': 'lNg6xyaBCCsOKsRgvrU3Fw==oGrQMVukYf4LkcSW',
+    },},
+    function(error, response, body) {
+      if(error) return console.error('Request failed:', error);
+      else if(response.statusCode != 200) return console.error('Error:', response.statusCode, body.toString('utf8'));
+      else console.log(body)
+  })
+  
+  .then(response => response.json())
+  .catch(error => console.log('Error while fetching:', error))
 }
