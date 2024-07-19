@@ -6,6 +6,7 @@
   --secondary-color: #f3f3f3 ;/*gray white*/
   --accent1-color: #cccccc;/*light*/
   --accent2-color: #474747;/*dark gray*/
+  --accent3-color: #cd5909;/*Rust Orange*/
 
   --heading-font: 'Orbitron', sans-serif;
   --paragraph-font: 'Ubuntu', sans-serif;
@@ -18,6 +19,9 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 0 10px;
+  }
+  body{
+    text-align: center;
   }
   footer{
     font-family: var(--heading-font);
@@ -85,7 +89,7 @@ a, a h2 {
   font-size: small;
 }
 
-#icon-type{
+#icon-type, #typeDisplay{
   text-align: center;
   display: flex;
   flex-wrap: wrap;
@@ -96,5 +100,17 @@ a, a h2 {
 .icon-type a img{
   width: 100%;
 }
+#typeDisplay{
+  margin-top: 10px;
+}
 
-  
+.exercise{
+  margin: auto;
+  margin-bottom: 1em;
+  padding: 1em;
+ width: 30%;
+  border: var(--accent3-color);
+  border-width: 2px;
+  border-radius: 5px;
+  border-style: solid;
+}

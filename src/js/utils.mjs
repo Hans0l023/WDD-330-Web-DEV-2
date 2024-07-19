@@ -15,7 +15,7 @@ export function renderWithTemplate(
   
   export async function loadHeaderFooter()
   {
-    const header = await loadTemplate("./partials/header.html")
+    const header = await loadTemplate("/partials/header.html")
     const footer = await loadTemplate("/partials/footer.html")
   
     const headerElement = document.querySelector("#main-header")
@@ -46,7 +46,7 @@ export function renderWithTemplate(
  export async function getResult() {
   const type = getType()
   console.log(type)
-return fetch('https://api.api-ninjas.com/v1/exercises?type' + type, {
+return fetch('https://api.api-ninjas.com/v1/exercises?type=' + type, {
     headers: {
       'x-api-key': 'lNg6xyaBCCsOKsRgvrU3Fw==oGrQMVukYf4LkcSW',
     },},
