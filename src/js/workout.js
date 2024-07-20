@@ -41,11 +41,12 @@ async function loadResult(){
     const result = await getResult();
     typeDisplayDiv.innerHTML = result.map(item => `
      <div class="exercise" id="excerciseWorkout">
-     <div><img src="/images/favorite.png"  class="favImg" id="favorite-icon"  data-name="${item.name}" data-type="${item.type}" data-muscle="${item.muscle}" data-difficulty="${item.difficulty}" data-instructions="${item.instructions}" alt="Favorite Icon" /></div>
+     <div><img src="/images/favorite.png"  class="favImg" id="favorite-icon"  data-name="${item.name}" data-type="${item.type}" data-muscle="${item.muscle}" data-difficulty="${item.difficulty}" data-equipment="${item.equipment}" data-instructions="${item.instructions}" alt="Favorite Icon" /></div>
          <div class="exercise-name"><h2>Name:</h2> ${item.name}</div>
 
          <div><h2>Difficulty:</h2> ${item.difficulty}</div>
          <div><h2>Muscle:</h2> ${item.muscle}</div>
+         <div><h2>Equipment:</h2> ${item.equipment}</div>
          <div><h2>Instructions:</h2> ${item.instructions}</div>
 
      </div>
@@ -59,11 +60,15 @@ async function loadResult(){
               name: e.target.getAttribute("data-name"),
               type: e.target.getAttribute("data-type"),
               muscle: e.target.getAttribute("data-muscle"),
+              equipment: e.target.getAttribute("data-equipment"),
               difficulty: e.target.getAttribute("data-difficulty"),
               instructions: e.target.getAttribute("data-instructions")
+
           };
+          
           addToFavorites(exercise);
       });
+    
   });
   
    }
@@ -73,7 +78,8 @@ async function loadResult(){
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     favorites.push(exercise);
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    alert(`${exercise.name} added to favorites!`);
+    addUserIconClickListener();
+    //alert(`${exercise.name} added to favorites!`);
 }
 
   // Add event listeners to the favorite icons
@@ -91,6 +97,21 @@ async function loadResult(){
         addToFavorites(exercise);
     });
 });
+
+// Add animation to user icon on click
+function addUserIconClickListener() {
+  const userIcon = document.getElementById('favorite-icon');
+  
+  userIcon.addEventListener('click', () => {
+    userIcon.classList.add('animate-click');
+    console.log('bang')
+    
+    // Remove the animation class after the animation ends
+    userIcon.addEventListener('animationend', () => {
+      userIcon.classList.remove('animate-click');
+    }, { once: true });
+  });
+}
 
 
 async function init(){

@@ -9,11 +9,13 @@ function displayFavorites() {
 
     if (favorites.length > 0) {
         favoritesDiv.innerHTML = favorites.map(item => `
-            <div class="exercise" id="excerciseWorkout">
+            <div class="exercise" id="excercisefav">
                 <div><img src="/images/delete.png"  class="delImg" data-name="${item.name}" id="delete-icon"  alt="Delete Icon" /></div>
                 <h2 class="exercise-name">Name:</h2> ${item.name}
+                <h2>Type: </h2> ${item.type}
                 <h2>Muscle:</h2> ${item.muscle}
                 <h2>Difficulty:</h2> ${item.difficulty}
+                <h2>Equipment:</h2> ${item.equipment}
                 <h2>Instructions:</h2> ${item.instructions}
             </div>
         `).join('');

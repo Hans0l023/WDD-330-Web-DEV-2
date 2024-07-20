@@ -22,6 +22,7 @@ header {
   }
 html{
   font-family: var(--paragraph-font);
+  min-width: 300px;
 }
 
   body{
@@ -50,17 +51,14 @@ html{
   }
   .logo a {
     text-decoration: none;
-    color: var(--font-body);
   }
   #title{
     padding-left: 5px;
   }
-  .divider {
+  .divider,  .divider li {
     border-bottom: 2px solid var(--primary-color);
   }
-  .divider li{
-    border: 2px solid var(--primary-color);
-  }
+ 
   .heroMsg{
     text-align: center;
     padding: 2rem;
@@ -86,6 +84,10 @@ html{
   align-self: auto;
 
 }
+.icon:hover, #exerciseType:hover{
+  transform: scale(1.1); /* Slightly enlarge the icon */
+  box-shadow: 0 5px 10px var(--accent3-color);
+}
 
 a, a h2 {
   text-decoration: none;
@@ -110,6 +112,7 @@ a, a h2 {
 
 .exercise{
   margin: auto;
+  font-size: small;
   text-align: left;
   margin-bottom: 1em;
   padding: 1em;
@@ -122,10 +125,39 @@ a, a h2 {
 }
 
 
-#excerciseWorkout{
+#excerciseWorkout, #excercisefav{
   width: 80%;
 }
 .favImg, .delImg{
  max-width: 20px;
  float: right;
 }
+
+/* Define the animation */
+@keyframes iconClickAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Apply the animation class */
+.animate-click {
+  animation: iconClickAnimation 0.3s ease;
+}
+
+
+@media (max-width: 350px) {
+  .logo {
+    font-size: xxsmall;
+  }
+
+  .heroMsg{
+font-size: small;
+  }
+  }
