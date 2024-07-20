@@ -6,9 +6,9 @@ import { loadHeaderFooter } from "./utils.mjs";
 
 export function getName(){
     const params = new URLSearchParams(window.location.search);
-    const name = params.get('name') || 'default';
+    const name = params.get("name") || "default";
   
-    console.log('name from URL:', name);
+    console.log("name from URL:", name);
     return name
   }
 
@@ -40,24 +40,61 @@ async function loadResult(){
   
     const result = await getResult();
     typeDisplayDiv.innerHTML = result.map(item => `
-     <div class="exercise">
-         <div class="exercise-name">Name: ${item.name}</div>
-         <div class="exercise-name">Name: ${item.type}</div>
+     <div class="exercise" id="excerciseWorkout">
+     <div><img src="/images/favorite.png"  class="favImg" id="favorite-icon"  data-name="${item.name}" data-type="${item.type}" data-muscle="${item.muscle}" data-difficulty="${item.difficulty}" data-instructions="${item.instructions}" alt="Favorite Icon" /></div>
+         <div class="exercise-name"><h2>Name:</h2> ${item.name}</div>
 
-         <div>Difficulty: ${item.difficulty}</div>
-         <div>Muscle: ${item.muscle}</div>
-         <div>Instructions: ${item.instructions}</div>
+         <div><h2>Difficulty:</h2> ${item.difficulty}</div>
+         <div><h2>Muscle:</h2> ${item.muscle}</div>
+         <div><h2>Instructions:</h2> ${item.instructions}</div>
 
      </div>
   `).join('');
+    // Add event listeners to the favorite icons
+
+    document.querySelectorAll(".favImg").forEach(icon => {
+      icon.addEventListener("click", (e) => {
+        console.log("hit")
+          const exercise = {
+              name: e.target.getAttribute("data-name"),
+              type: e.target.getAttribute("data-type"),
+              muscle: e.target.getAttribute("data-muscle"),
+              difficulty: e.target.getAttribute("data-difficulty"),
+              instructions: e.target.getAttribute("data-instructions")
+          };
+          addToFavorites(exercise);
+      });
+  });
+  
    }
    loadResult();
 
+   function addToFavorites(exercise) {
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    favorites.push(exercise);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    alert(`${exercise.name} added to favorites!`);
+}
 
+  // Add event listeners to the favorite icons
+
+  document.querySelectorAll(".favImg").forEach(icon => {
+    icon.addEventListener("click", (e) => {
+      console.log("hit")
+        const exercise = {
+            name: e.target.getAttribute("data-name"),
+            type: e.target.getAttribute("data-type"),
+            muscle: e.target.getAttribute("data-muscle"),
+            difficulty: e.target.getAttribute("data-difficulty"),
+            instructions: e.target.getAttribute("data-instructions")
+        };
+        addToFavorites(exercise);
+    });
+});
 
 
 async function init(){
     await loadHeaderFooter()
-    console.log('here')
+    console.log("here")
 }
 init();
