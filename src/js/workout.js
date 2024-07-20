@@ -100,9 +100,11 @@ async function loadResult(){
 
 // Add animation to user icon on click
 function addUserIconClickListener() {
-  const userIcon = document.getElementById('favorite-icon');
+  const favIcon = document.getElementById('favorite-icon');
+  const userIcon = document.getElementById('userIcon');
   
-  userIcon.addEventListener('click', () => {
+  
+  favIcon.addEventListener('click', () => {
     userIcon.classList.add('animate-click');
     console.log('bang')
     
