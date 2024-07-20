@@ -54,6 +54,7 @@ async function loadResult(){
     // Add event listeners to the favorite icons
 
     document.querySelectorAll(".favImg").forEach(icon => {
+      addUserIconClickListener();
       icon.addEventListener("click", (e) => {
         console.log("hit")
           const exercise = {
@@ -78,8 +79,7 @@ async function loadResult(){
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     favorites.push(exercise);
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    addUserIconClickListener();
-    //alert(`${exercise.name} added to favorites!`);
+    alert(`${exercise.name} added to favorites!`);
 }
 
   // Add event listeners to the favorite icons
