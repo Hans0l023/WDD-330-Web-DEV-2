@@ -1,0 +1,12 @@
+import{l as c}from"./utils-DXYwRS0d.js";function r(){const t=new URLSearchParams(window.location.search).get("name")||"default";return console.log("name from URL:",t),t}async function s(){const a=r();return console.log(a),fetch("https://api.api-ninjas.com/v1/exercises?name="+a,{headers:{"x-api-key":"lNg6xyaBCCsOKsRgvrU3Fw==oGrQMVukYf4LkcSW"}},function(t,e,i){if(t)return console.error("Request failed:",t);if(e.statusCode!=200)return console.error("Error:",e.statusCode,i.toString("utf8"));console.log(i)}).then(t=>t.json()).catch(t=>console.log("Error while fetching:",t))}async function l(){const a=document.querySelector("#workout"),t=await s();a.innerHTML=t.map(e=>`
+     <div class="exercise" id="excerciseWorkout">
+     <div><img src="/images/favorite.png"  class="favImg" id="favorite-icon"  data-name="${e.name}" data-type="${e.type}" data-muscle="${e.muscle}" data-difficulty="${e.difficulty}" data-equipment="${e.equipment}" data-instructions="${e.instructions}" alt="Favorite Icon" /></div>
+         <div class="exercise-name"><h2>Name:</h2> ${e.name}</div>
+
+         <div><h2>Difficulty:</h2> ${e.difficulty}</div>
+         <div><h2>Muscle:</h2> ${e.muscle}</div>
+         <div><h2>Equipment:</h2> ${e.equipment}</div>
+         <div><h2>Instructions:</h2> ${e.instructions}</div>
+
+     </div>
+  `).join(""),document.querySelectorAll(".favImg").forEach(e=>{e.addEventListener("click",i=>{console.log("hit");const o={name:i.target.getAttribute("data-name"),type:i.target.getAttribute("data-type"),muscle:i.target.getAttribute("data-muscle"),equipment:i.target.getAttribute("data-equipment"),difficulty:i.target.getAttribute("data-difficulty"),instructions:i.target.getAttribute("data-instructions")};n(o)})})}l();function n(a){let t=JSON.parse(localStorage.getItem("favorites"))||[];t.push(a),localStorage.setItem("favorites",JSON.stringify(t)),u()}document.querySelectorAll(".favImg").forEach(a=>{a.addEventListener("click",t=>{console.log("hit");const e={name:t.target.getAttribute("data-name"),type:t.target.getAttribute("data-type"),muscle:t.target.getAttribute("data-muscle"),difficulty:t.target.getAttribute("data-difficulty"),instructions:t.target.getAttribute("data-instructions")};n(e)})});function u(){const a=document.getElementById("favorite-icon");a.addEventListener("click",()=>{a.classList.add("animate-click"),console.log("bang"),a.addEventListener("animationend",()=>{a.classList.remove("animate-click")},{once:!0})})}async function d(){await c(),console.log("here")}d();
